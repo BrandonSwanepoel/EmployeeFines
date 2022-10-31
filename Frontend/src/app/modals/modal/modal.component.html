@@ -1,0 +1,20 @@
+<div [ngClass]="{ 'is-active': showModal == true}" class="modal">
+    <div class="modal-background">
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">{{details?.title}}</p>
+                <button class="delete" (click)="closeModal()" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div *ngIf="type == modalTypes.Employees">
+                    <app-employee-modal [details]="getDetails" (updatedDetails)="setUpdatedDetails($event)">
+                    </app-employee-modal>
+                </div>
+                <div *ngIf="type == modalTypes.Fine">
+                    <app-employee-fine-modal [details]="getDetails" (updatedDetails)="setUpdatedDetails($event)" [employeeId]="employeeId">
+                    </app-employee-fine-modal>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

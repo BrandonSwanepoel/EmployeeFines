@@ -1,0 +1,52 @@
+<div class="container has-text-centered">
+  <p class="title">
+    {{ getTitle }}
+  </p>
+  <p style="align-content: center">
+    <button [disabled]="!employeeSelected || employeeDeactivated" (click)="addEmployeeFine()"
+      class="button is-bordered">
+      Add fine
+    </button>
+    <button [disabled]="!employeeSelected || employeeDeactivated" style="margin-left: 20px" (click)="exportToJson()"
+      class="button is-success">
+      Export to Json
+    </button>
+  </p>
+  <input class="search" name="searchText" type="text" placeholder="Search..." [(ngModel)]="setSearchedText" />
+  <div class="columns">
+    <div class="tableContainer">
+
+      <div class="errorMessage" *ngIf="hasError">
+        {{errorMessage}}
+      </div>
+
+      <table *ngIf="!hasError" class="table is-bordered">
+
+        <thead>
+          <tr>
+            <th>Value</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!employeeDeactivated">
+          <tr *ngFor="let fine of employeeFines | searchFilter: getSearchedText">
+            <td>{{ fine.value }}</td>
+            <td>{{ fine.date }}</td>
+            <td>
+              <button (click)="editEmployeeFine(fine)" class="icon-button">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="deleteEmployeeFine(fine.id)" class="icon-button">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<form [formGroup]="fineForm">
+<div class="field">
+  <label class="label">Value</label>
+  <div class="control">
+    <input *ngIf="addingItem" formControlName="value" class="input" type="text" required />
+    <input *ngIf="!addingItem" formControlName="value" class="input" type="text" value="{{ fineValue }}" required />
+    Value is required.
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Date</label>
+  <div class="control">
+    <input *ngIf="addingItem" formControlName="date" class="input" type="date" required />
+    <input *ngIf="!addingItem" formControlName="date" class="input" type="date" value="{{ dateOfFine }}" required />
+    Date is required.
+  </div>
+</div>
+<button *ngIf="addingItem" [disabled]="!fineForm.valid" (click)="add()" class="button is-success">Add Fine</button>
+<button *ngIf="!addingItem" [disabled]="!fineForm.valid" (click)="edit()" class="button is-success">Save changes</button>
+</form>

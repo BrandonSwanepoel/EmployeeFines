@@ -1,0 +1,52 @@
+div.columns {
+  margin-top: 50px;
+}
+
+.table th {
+  top: 0;
+  font-size: 17px;
+  width:249.3px;
+  position: sticky;
+  box-shadow: inset 0 -1px 0 #ebebeb;
+  height: 100%;
+  background-color: white;
+  padding: 8px
+}
+
+.table td {
+  font-size: 17px;
+  user-select: none;
+  cursor: pointer;
+  width:249.3px;
+}
+
+.table tr {
+  align-content: center;
+}
+
+.search {
+  margin-top: 10px;
+  float: right;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.tableContainer {
+  align-content: center;
+  margin: auto;
+  border: 1px solid lightblue;
+  width: 1000px;
+  height: 250px;
+  overflow: auto;
+}
+
+.errorMessage {
+  font-size: 18px;
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}

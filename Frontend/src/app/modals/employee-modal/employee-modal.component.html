@@ -1,0 +1,33 @@
+<form [formGroup]="employeeForm">
+  <div class="field">
+    <label class="label">First name</label>
+    <div class="control">
+      <input *ngIf="addingItem" formControlName="firstName" class="input" type="text" required />
+      <input *ngIf="!addingItem" formControlName="firstName" class="input" type="text" value="{{ firstName }}"
+        required />
+      First name is required.
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Last name</label>
+    <div class="control">
+      <input *ngIf="addingItem" formControlName="lastName" class="input" type="text" required />
+      <input *ngIf="!addingItem" formControlName="lastName" class="input" type="text" value="{{ lastName }}" required />
+      Last name is required.
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Deactivated</label>
+    <div class="control">
+      <label class="checkbox">
+        <input *ngIf="addingItem" formControlName="deactivated" type="checkbox" [checked]="false" />
+        <input *ngIf="!addingItem" formControlName="deactivated" type="checkbox" [checked]="deactivated == true" />
+      </label>
+    </div>
+  </div>
+  <button *ngIf="addingItem" [disabled]="!employeeForm.valid" (click)="add()" class="button is-success">Add
+    employee</button>
+  <button *ngIf="!addingItem" [disabled]="!employeeForm.valid" (click)="edit()" class="button is-success">Save
+    changes</button>
+</form>

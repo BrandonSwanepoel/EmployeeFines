@@ -1,0 +1,5 @@
+<app-employee [updatedDetails]="updatedDetails" (modal)="setModal($event)" (employee)="setEmployee($event)">
+</app-employee>
+<app-employee-fines [updatedDetails]="updatedDetails" [employee]="employeeValue" (modal)="setModal($event)">
+</app-employee-fines>
+<app-modal [details]="modalDetails" (updatedDetails)="setUpdatedDetails($event)"></app-modal>

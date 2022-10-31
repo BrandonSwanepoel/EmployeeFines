@@ -1,0 +1,56 @@
+<section class="hero-body">
+  <div class="container has-text-centered">
+    <p class="title">
+      {{ type }}
+    </p>
+    <p class="title">
+      <button (click)="addEmployee()" class="button is-bordered">
+        Add employee
+      </button>
+    </p>
+    <input class="search" name="searchText" type="text" placeholder="Search..." [(ngModel)]="setSearchedText" />
+    <hr />
+    <div class="columns">
+
+      <div class="tableContainer">
+
+        <div class="errorMessage" *ngIf="hasError">
+          {{errorMessage}}
+        </div>
+
+        <table *ngIf="!hasError" class="table is-bordered">
+
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Deactivated</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                let employee of getEmployees | searchFilter: getSearchedText
+              " [ngClass]="{ selectedRow: isSelected(employee) }">
+              <td (click)="setEmployee(employee)">
+                {{ employee.firstName }}
+              </td>
+              <td (click)="setEmployee(employee)">
+                {{ employee.lastName }}
+              </td>
+
+              <td (click)="setEmployee(employee)">
+                  <input type="checkbox" [disabled]="true" [checked]="employee.deactivated == true" />
+              </td>
+              <td>
+                <button (click)="editEmployee(employee)" class="icon-button">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
